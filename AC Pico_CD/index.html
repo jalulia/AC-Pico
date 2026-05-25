@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Arcade I/O Pico Carrier v0.1 — Field Guide</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="paper.css">
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<!-- ========================================================
+     RUNNING TOP BAR — like a folio header on every page
+     ======================================================== -->
+<header class="topbar">
+  <div class="wrap" style="display:grid; grid-template-columns: auto 1fr auto; gap:24px; align-items:center; padding: 18px 0;">
+    <a href="index.html" class="brand-mark" aria-label="Arcade Commons">
+      <svg viewBox="0 0 401.99 401.99" class="ac-mark" aria-hidden="true">
+        <path fill="currentColor" d="m129.69,122.57l5.56,28.89c.78,4.06,3.29,7.59,6.87,9.65l24.58,14.19c4.41,2.55,7.13,7.25,7.13,12.35v17.24s-28.1,0-28.1,0c-8.86,0-16.04,7.18-16.04,16.04v42.01c0,10.19,5.44,19.61,14.27,24.7l57.04,32.92v-140.37c0-10.19-5.44-19.61-14.26-24.7l-57.05-32.94Zm44.16,107.82v43.13l-16.84-9.75c-2.2-1.27-3.56-3.62-3.56-6.17l-.02-23.61c0-1.97,1.59-3.56,3.56-3.57l16.86-.04Z"></path>
+        <path fill="currentColor" d="m201,320.59l57.05-32.94c8.82-5.09,14.26-14.51,14.26-24.7v-18.63c0-2.55-1.36-4.9-3.56-6.17l-20.2-11.67v33.24c0,1.27-.68,2.45-1.78,3.09l-18.58,10.72-.02-90.17,17.69-10.21c1.19-.69,2.67.17,2.67,1.54v12.59s23.78-13.72,23.78-13.72l-.02-34.5c.01-10.2-5.43-19.63-14.26-24.73l-57.03-32.91-71.31,41.17,57.05,32.94c8.82,5.09,14.26,14.51,14.26,24.7v140.37Z"></path>
+      </svg>
+      <span class="mono-xs" style="letter-spacing:.14em;">ARCADE&nbsp;COMMONS</span>
+    </a>
+    <span class="mono-xs" style="color:var(--ink-faint); text-align:center; letter-spacing:.14em;">
+      ARCADE&nbsp;I/O&nbsp;·&nbsp;PICO&nbsp;CARRIER&nbsp;v0.1&nbsp;·&nbsp;FIELD&nbsp;GUIDE
+    </span>
+    <span class="mono-xs" style="color:var(--ink-faint); letter-spacing:.14em;">
+      25.05.2026&nbsp;&nbsp;·&nbsp;&nbsp;PRESS&nbsp;<kbd style="font-family:inherit; border:.5px solid var(--rule); padding:1px 6px; letter-spacing:0;">T</kbd>&nbsp;TWEAKS
+    </span>
+  </div>
+  <hr class="rule">
+</header>
+
+<!-- ========================================================
+     PLATE 00 — COVER / SPECIMEN
+     ======================================================== -->
+<section id="cover" data-screen-label="00 Cover" style="padding-top: 32px;">
+  <div class="wrap">
+
+    <div class="folio">
+      <span class="num">PLATE 00</span>
+      <span class="ttl">Frontispiece · Catalogue Entry</span>
+      <span class="meta">Filed 2026 · Indie Arcade Commons</span>
+    </div>
+    <hr class="rule">
+
+    <div class="cover-grid">
+      <!-- LEFT: title + abstract leads -->
+      <div class="cover-left">
+        <div class="cover-title">
+          <h1>Arcade<br/>I/O</h1>
+          <div class="cover-sub">
+            <span class="mono-sm">PICO·CARRIER</span>
+            <span class="mono-sm" style="color:var(--vermilion);">v0.1</span>
+          </div>
+        </div>
+
+        <div class="abstract">
+          <div class="abstract-head">
+            <span class="eyebrow">/Abstract</span>
+            <span class="mono-xs" style="color:var(--ink-faint);">≈ 18 min read · Eight plates</span>
+          </div>
+          <p class="lede">
+            A purpose-built USB input/output carrier for indie arcade cabinets. Reads buttons, digital joysticks, Hall-effect analog sticks, SpinTrak-class spinners, and pots — and drives a modest battery of cabinet LEDs. The v0.1 board is a <em>Pico carrier</em>, not a bare-RP2040 product yet: the Pico solves USB, flashing, regulation, and timing so the carrier can concentrate on cabinet-side ergonomics.
+          </p>
+
+          <div class="stat-row">
+            <div class="stat" style="--lane:var(--teal);">
+              <span class="stat-bar"></span>
+              <span class="stat-n">32</span>
+              <span class="stat-lbl">Digital inputs<br/><em>switch to ground</em></span>
+            </div>
+            <div class="stat" style="--lane:var(--green);">
+              <span class="stat-bar"></span>
+              <span class="stat-n">8</span>
+              <span class="stat-lbl">Analog channels<br/><em>12-bit · MCP3208</em></span>
+            </div>
+            <div class="stat" style="--lane:var(--vermilion);">
+              <span class="stat-bar"></span>
+              <span class="stat-n">2–4</span>
+              <span class="stat-lbl">Spinner ports<br/><em>quadrature A/B</em></span>
+            </div>
+            <div class="stat" style="--lane:var(--orange);">
+              <span class="stat-bar"></span>
+              <span class="stat-n">10</span>
+              <span class="stat-lbl">LED sinks<br/><em>PWM · MOSFET</em></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: specimen drawing + classification metadata -->
+      <div class="cover-right">
+        <div class="specimen-drawing" id="specimen">
+          <!-- See specimen.jsx for animated SVG -->
+        </div>
+
+        <div class="classification">
+          <div class="classification-head">
+            <span class="eyebrow">/Classification</span>
+            <span class="mono-xs" style="color:var(--ink-faint);">DOC AIO-PC-001</span>
+          </div>
+          <table class="spec">
+            <tbody>
+              <tr><td class="label">Class</td><td class="val">USB I/O Carrier Board</td></tr>
+              <tr><td class="label">Order</td><td class="val">Arcade · Cabinet-grade</td></tr>
+              <tr><td class="label">Brain</td><td class="val">Raspberry Pi Pico H · RP2040</td></tr>
+              <tr><td class="label">Habitat</td><td class="val">Bench · Cabinet · Unity Host</td></tr>
+              <tr><td class="label">Status</td><td class="val"><span class="dot verm"></span>Prototype Stream</td></tr>
+              <tr><td class="label">Specimen</td><td class="val">001 of 004</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <hr class="rule" style="margin-top: 56px;">
+    <div class="folio">
+      <span class="num">CONTENTS</span>
+      <span class="ttl">Eight plates · One specimen</span>
+      <span class="meta">≈ 18 min read</span>
+    </div>
+    <hr class="rule">
+
+    <nav class="contents-grid">
+      <a href="#cover">
+        <span class="tag-num">00</span>
+        <span class="t">Frontispiece</span>
+        <span class="t-meta">Catalogue entry</span>
+      </a>
+      <a href="#anatomy">
+        <span class="tag-num">01</span>
+        <span class="t">Anatomy</span>
+        <span class="t-meta">Exploded plate · 11 callouts</span>
+      </a>
+      <a href="#variants">
+        <span class="tag-num">02</span>
+        <span class="t">Variants</span>
+        <span class="t-meta">Population options · 32D/8A → 48D/16A</span>
+      </a>
+      <a href="#capacity">
+        <span class="tag-num">03</span>
+        <span class="t">Capacity</span>
+        <span class="t-meta">Four-joystick arithmetic</span>
+      </a>
+      <a href="#connectors">
+        <span class="tag-num">04</span>
+        <span class="t">Connectors</span>
+        <span class="t-meta">Field-wiring map</span>
+      </a>
+      <a href="#signal">
+        <span class="tag-num">05</span>
+        <span class="t">Signal flow</span>
+        <span class="t-meta">Switch → USB · 1 ms loop</span>
+      </a>
+      <a href="#bom">
+        <span class="tag-num">06</span>
+        <span class="t">BOM</span>
+        <span class="t-meta">Board-side parts · $35–$55</span>
+      </a>
+      <a href="#build">
+        <span class="tag-num">07</span>
+        <span class="t">Build sequence</span>
+        <span class="t-meta">Three passes · with cautions</span>
+      </a>
+    </nav>
+  </div>
+</section>
+
+<style>
+  /* Cover-specific */
+  .topbar { position: sticky; top: 0; background: var(--paper); z-index: 50; }
+  .cover-grid {
+    display: grid;
+    grid-template-columns: minmax(440px, 1.25fr) minmax(380px, 1fr);
+    gap: 64px;
+    margin-top: 40px;
+    align-items: start;
+  }
+  .cover-title h1 {
+    text-transform: none;
+    margin-bottom: 18px;
+  }
+  .cover-sub {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    padding-top: 18px;
+    border-top: var(--hair) solid var(--rule);
+  }
+
+  /* Abstract — leads */
+  .abstract { margin-top: 48px; }
+  .abstract-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-bottom: 12px;
+    border-bottom: var(--hair) solid var(--rule);
+    margin-bottom: 18px;
+    letter-spacing: .12em;
+  }
+  .abstract-head .eyebrow { color: var(--vermilion); }
+  .abstract em {
+    font-style: normal;
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  /* Distinct metric cards (replaces pills) */
+  .stat-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    margin-top: 28px;
+    border-top: var(--hair) solid var(--rule);
+    border-left: var(--hair) solid var(--rule);
+  }
+  @media (max-width: 700px) {
+    .stat-row { grid-template-columns: repeat(2, 1fr); }
+  }
+  .stat {
+    position: relative;
+    padding: 16px 16px 18px 18px;
+    border-right: var(--hair) solid var(--rule);
+    border-bottom: var(--hair) solid var(--rule);
+    background: var(--paper);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-height: 92px;
+  }
+  .stat-bar {
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 4px;
+    background: var(--lane);
+  }
+  .stat-n {
+    font: 400 32px/1 var(--sans);
+    letter-spacing: -.035em;
+    color: var(--ink);
+    font-variant-numeric: tabular-nums;
+  }
+  .stat-lbl {
+    font: 500 10px/1.4 var(--mono);
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin-top: auto;
+  }
+  .stat-lbl em {
+    display: block;
+    font-style: normal;
+    color: var(--ink-faint);
+    font-weight: 500;
+    margin-top: 2px;
+  }
+
+  /* Right column — specimen + classification */
+  .cover-right { display: grid; gap: 28px; }
+  .specimen-drawing {
+    position: relative;
+    aspect-ratio: 720 / 460;
+    border: var(--hair) solid var(--rule);
+    background: var(--paper);
+    overflow: hidden;
+  }
+  .classification-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-bottom: 12px;
+    border-bottom: var(--hair) solid var(--rule);
+    margin-bottom: 4px;
+    letter-spacing: .12em;
+  }
+  .classification-head .eyebrow { color: var(--vermilion); }
+  .classification table.spec td { padding: 11px 0; border-bottom: var(--hair) solid var(--rule-soft); }
+  .classification table.spec tr:last-child td { border-bottom: 0; }
+
+  .contents-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: var(--hair) solid var(--rule);
+    border-left: var(--hair) solid var(--rule);
+  }
+  .contents-grid a {
+    display: grid;
+    gap: 6px;
+    padding: 22px 18px;
+    border-right: .75px solid var(--rule);
+    border-bottom: .75px solid var(--rule);
+    background: var(--paper);
+    color: var(--ink);
+    border-bottom-style: solid;
+    text-decoration: none;
+  }
+  .contents-grid a:hover { background: var(--vermilion); color: var(--paper); }
+  .contents-grid a:hover .t-meta,
+  .contents-grid a:hover .tag-num { color: inherit; }
+  .contents-grid a .tag-num { color: var(--vermilion); }
+  .contents-grid a .t { font-size: 16px; letter-spacing: -.01em; }
+  .contents-grid a .t-meta { font: 500 10px/1.2 var(--mono); letter-spacing: .04em; text-transform: uppercase; color: var(--ink-faint); }
+
+  @media (max-width: 900px) {
+    .cover-grid { grid-template-columns: 1fr; gap: 32px; }
+    .contents-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+
+<!-- ========================================================
+     PLATE 01 — ANATOMY (the big exploded specimen)
+     ======================================================== -->
+<section id="anatomy" data-screen-label="01 Anatomy">
+  <div class="wrap">
+    <div class="folio">
+      <span class="num">PLATE 01</span>
+      <span class="ttl">Anatomy of the Specimen</span>
+      <span class="meta">Top-down · No scale</span>
+    </div>
+    <hr class="rule">
+
+    <div class="anatomy-head">
+      <div>
+        <span class="eyebrow">§ 01 · Anatomy</span>
+        <h2 style="margin-top:14px;">A board you can read<br/>before you solder it.</h2>
+      </div>
+      <p class="body" style="align-self:end;">
+        Eleven functional blocks, hairline-ruled and called out. Hover or click any numbered tag to inspect its role, wiring assumption, and prototype notes. Colour code: <span class="mono-sm"><span class="dot blue"></span>data</span> · <span class="mono-sm"><span class="dot verm"></span>signal</span> · <span class="mono-sm"><span class="dot gold"></span>power &amp; light</span>.
+      </p>
+    </div>
+
+    <div class="plate" style="margin-top: 36px;">
+      <div class="reg tl"></div><div class="reg tr"></div>
+      <div class="reg bl"></div><div class="reg br"></div>
+
+      <div class="plate-head">
+        <span class="pl-title">Plate 01 · Arcade I/O Pico Carrier v0.1 · Exploded top-down</span>
+        <span class="pl-meta">SHEET 01 / 01 · NORTH ↑ · DRAWN A. PRINCEPS</span>
+      </div>
+
+      <div id="anatomy-figure"></div>
+
+      <div class="plate-caption">
+        <span class="fig">Fig. 01</span>
+        <span class="desc">
+          The carrier presents the cabinet wirer with five terminal banks arrayed around a central Pico H module. Signal flow runs <em>perimeter → silicon → USB</em>, never the reverse. Power for LEDs is admitted at the upper-right gate and never crosses logic ground except at the star point.
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .anatomy-head {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 40px;
+    margin-top: 36px;
+    align-items: end;
+  }
+  @media (max-width: 900px) {
+    .anatomy-head { grid-template-columns: 1fr; }
+  }
+</style>
+
+<!-- placeholders for the rest — injected by section scripts -->
+<div id="rest"></div>
+
+<!-- ========================================================
+     SCRIPTS
+     ======================================================== -->
+<script type="text/babel" src="specimen.jsx"></script>
+<script type="text/babel" src="mini-diagrams.jsx"></script>
+<script type="text/babel" src="anatomy.jsx"></script>
+<script type="text/babel" src="sections.jsx"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel" src="app.jsx"></script>
+
+</body>
+</html>
